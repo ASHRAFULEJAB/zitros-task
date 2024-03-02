@@ -2,6 +2,7 @@
 import React from "react";
 import ProductCard from "./ProductCard";
 import ProductCardUpload from "./ProductCardWithUpload";
+import ProductForm from "./ProductForm";
 
 interface Product {
   name: string;
@@ -38,7 +39,7 @@ const ProductAdditionSection: React.FC<ProductAdditionProps> = ({
       <h1 className="my-3 text-xl">Add Product</h1>
       {/* Image Upload */}
 
-      <div className="flex gap-5 mt-6">
+      <div className="flex gap-3 mt-6">
         <div className="flex-1 border p-3 rounded-lg">
           {" "}
           <span>Add images</span>
@@ -86,23 +87,10 @@ const ProductAdditionSection: React.FC<ProductAdditionProps> = ({
           <ProductCardUpload />
         </div>
         {/* Product Details Form */}
-        <form className="mt-8 flex-1">
-          <input
-            type="text"
-            name="name"
-            value={product.name}
-            onChange={onInputChange}
-            placeholder="Product Name"
-            className="w-full mb-4 px-4 py-2 rounded-md border border-gray-300 focus:outline-none"
-          />
-          {/* Add more form fields with similar styling */}
-          <button
-            onClick={onPublish}
-            className="bg-blue-500 text-white px-4 py-2 rounded-md"
-          >
-            Publish Product
-          </button>
-        </form>
+        <div></div>
+        <div className="mt-0 flex-1 border p-3 rounded-lg">
+          <ProductForm></ProductForm>
+        </div>
       </div>
     </div>
   );
