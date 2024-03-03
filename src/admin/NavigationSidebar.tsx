@@ -1,5 +1,6 @@
 // NavigationMenu.tsx
 import React from "react";
+import logo from "../assets/images/logo.png";
 
 interface NavigationProps {
   activeSection: string;
@@ -13,13 +14,13 @@ const NavigationMenu: React.FC<NavigationProps> = ({
   return (
     <div className=" h-full w-1/8 text-white ">
       <div
-        className="relative flex flex-col   bg-gray-100
+        className="relative flex flex-col   bg-white
        text-gray-700 h-screen w-full max-w-[20rem] p-4 
         "
       >
         <div className="mb-2 p-4">
           <h5 className="block antialiased tracking-normal font-sans text-xl font-semibold leading-snug text-gray-900">
-            Big Bazzer
+            <img src={logo} alt="" />
           </h5>
         </div>
         <nav className="flex flex-col gap-1 min-w-[240px] p-2 font-sans text-base font-normal text-gray-700">

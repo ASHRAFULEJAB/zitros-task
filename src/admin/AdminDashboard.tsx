@@ -72,7 +72,7 @@ const AdminDashboard: React.FC = () => {
         activeSection={activeSection}
         setActiveSection={setActiveSection}
       />
-      <div className="flex-1">
+      <div className="flex-1 bg-gray-100">
         <UserAccountInfo
           username="Ismail Hossain"
           designation="Senior Accountant"

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button } from "../ui/button";
+import { Button } from "../components/ui/button";
 
 const ProductForm = () => {
   const [formData, setFormData] = useState({
@@ -83,7 +83,8 @@ const ProductForm = () => {
           name="subcategory"
           value={formData.subcategory}
           onChange={handleChange}
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none
+           focus:border-blue-500"
         >
           <option value="">Select subcategory</option>
           {formData.category &&
@@ -145,14 +146,6 @@ const ProductForm = () => {
             </button>
           </div>
         ))}
-      </div>
-      <div className="flex justify-end">
-        <Button
-          type="submit"
-          className="bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600 focus:outline-none"
-        >
-          Publish Product
-        </Button>
       </div>
     </form>
   );

@@ -3,6 +3,8 @@ import React from "react";
 import ProductCard from "./ProductCard";
 import ProductCardUpload from "./ProductCardWithUpload";
 import ProductForm from "./ProductForm";
+import { Button } from "../components/ui/button";
+// import uploadPic from "../../assets/images/uploadpic.png";
 
 interface Product {
   name: string;
@@ -35,7 +37,7 @@ const ProductAdditionSection: React.FC<ProductAdditionProps> = ({
   uploadProgress,
 }) => {
   return (
-    <div className="bg-gray-100 h-full w-5/6 p-4 mx-auto items-center justify-center mt-10 rounded-xl">
+    <div className="bg-white h-9/11 mb-6 w-5/6 p-4 mx-auto items-center justify-center mt-10 rounded-xl">
       <h1 className="my-3 text-xl">Add Product</h1>
       {/* Image Upload */}
 
@@ -44,7 +46,7 @@ const ProductAdditionSection: React.FC<ProductAdditionProps> = ({
           {" "}
           <span>Add images</span>
           <div
-            className="w-[460px]  relative border-2 mt-3 border-gray-300 border-dashed rounded-lg p-6"
+            className="w-[460px]  relative border-2 mt-3 border-blue-400 border-dashed rounded-lg p-6"
             id="dropzone"
           >
             <input
@@ -91,6 +93,15 @@ const ProductAdditionSection: React.FC<ProductAdditionProps> = ({
         <div className="mt-0 flex-1 border p-3 rounded-lg">
           <ProductForm></ProductForm>
         </div>
+      </div>
+      <div className="flex justify-end">
+        <Button
+          type="submit"
+          className="bg-blue-500 text-white px-6 py-2 mt-4 
+          rounded-md hover:bg-blue-600 focus:outline-none"
+        >
+          Publish Product
+        </Button>
       </div>
     </div>
   );

@@ -14,7 +14,7 @@ const UserAccountInfo: React.FC<UserAccountInfoProps> = ({
     <div className=" h-12 flex items-center  text-white ">
       <nav
         className="relative flex w-full flex-wrap items-center justify-between
-       bg-[#FBFBFB] py-2 text-neutral-500  hover:text-neutral-700
+       bg-gray-100 py-2 text-neutral-500  hover:text-neutral-700
         focus:text-neutral-700 dark:bg-neutral-600 lg:py-4"
       >
         <div className="flex w-full flex-wrap items-center justify-between px-3">
@@ -22,8 +22,14 @@ const UserAccountInfo: React.FC<UserAccountInfoProps> = ({
             <form className="hidden md:flex">
               <input
                 type="search"
-                className="relative m-0 block w-[250px] min-w-0 flex-auto rounded border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none dark:border-neutral-500 dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:focus:border-primary motion-reduce:transition-none"
-                placeholder="Search"
+                className="relative m-0 block w-[320px] bg-white py-1 min-w-0 flex-auto rounded border border-solid
+                 border-neutral-300 bg-transparent bg-clip-padding px-3 text-base font-normal
+                  leading-[1.6] text-neutral-700 outline-none transition duration-200 
+                  ease-in-out focus:z-[3] focus:border-primary focus:text-neutral-700 
+                  focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none
+                dark:border-neutral-500 dark:text-neutral-200 dark:placeholder:text-neutral-200
+                 dark:focus:border-primary motion-reduce:transition-none"
+                placeholder="Search for..."
                 aria-label="Search"
                 aria-describedby="button-addon2"
               />
@@ -55,12 +61,12 @@ const UserAccountInfo: React.FC<UserAccountInfoProps> = ({
             data-te-navbar-nav-ref
           >
             <li
-              className="relative px-2 mt-2"
+              className="relative px-2 mt-3"
               data-te-dropdown-ref
               data-te-dropdown-alignment="end"
             >
               <a
-                className="hidden-arrow mr flex items-center text-neutral-500 transition duration-200
+                className=" bg-white p-2 rounded-lg hidden-arrow mr flex items-center text-neutral-500 transition duration-200
                  hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30
                   dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 
                   [&.active]:text-black/90 dark:[&.active]:text-neutral-400 motion-reduce:transition-none"
@@ -123,7 +129,7 @@ const UserAccountInfo: React.FC<UserAccountInfoProps> = ({
                 </li> */}
               </ul>
             </li>
-            <li className="px-5  mt-2 " data-te-nav-item-ref>
+            <li className="px-5  mt-2 bg-white rounded-lg" data-te-nav-item-ref>
               <a
                 className="text-neutral-900 transition duration-200 
                 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700
@@ -135,7 +141,7 @@ const UserAccountInfo: React.FC<UserAccountInfoProps> = ({
               >
                 <img
                   src="https://tecdn.b-cdn.net/img/new/avatars/1.jpg"
-                  className="rounded"
+                  className="rounded mt-2"
                   style={{ height: "30px", width: "30px" }}
                   alt="TE Avatar"
                   loading="lazy"
