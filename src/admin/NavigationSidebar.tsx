@@ -7,10 +7,7 @@ interface NavigationProps {
   setActiveSection: (section: string) => void;
 }
 
-const NavigationMenu: React.FC<NavigationProps> = ({
-  activeSection,
-  setActiveSection,
-}) => {
+const NavigationMenu: React.FC<NavigationProps> = () => {
   return (
     <div className=" h-full w-1/8 text-white ">
       <div

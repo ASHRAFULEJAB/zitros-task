@@ -27,15 +27,7 @@ interface ProductAdditionProps {
   uploadProgress: number[];
 }
 
-const ProductAdditionSection: React.FC<ProductAdditionProps> = ({
-  onPublish,
-  onCancelUpload,
-  onInputChange,
-  onImageUpload,
-  product,
-  imageFiles,
-  uploadProgress,
-}) => {
+const ProductAdditionSection: React.FC<ProductAdditionProps> = () => {
   return (
     <div className="bg-white h-9/11 mb-6 w-5/6 p-4 mx-auto items-center justify-center mt-10 rounded-xl">
       <h1 className="my-3 text-xl">Add Product</h1>
@@ -52,7 +44,6 @@ const ProductAdditionSection: React.FC<ProductAdditionProps> = ({
             <input
               type="file"
               className="absolute inset-0 w-full h-full opacity-0 z-50"
-              onChange={onImageUpload}
               multiple
             />
             <div className="text-center">

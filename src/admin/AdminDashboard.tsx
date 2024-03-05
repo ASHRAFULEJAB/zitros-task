@@ -44,7 +44,7 @@ const AdminDashboard: React.FC = () => {
     setUploadProgress(progressArray);
 
     // Simulating image upload progress
-    files.forEach((file, index) => {
+    files.forEach((_file, index) => {
       const interval = setInterval(() => {
         setUploadProgress((prevProgress) => {
           const updatedProgress = [...prevProgress];

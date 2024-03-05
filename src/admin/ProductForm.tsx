@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Button } from "../components/ui/button";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useState } from "react";
 
 const ProductForm = () => {
   const [formData, setFormData] = useState({
@@ -12,13 +12,18 @@ const ProductForm = () => {
   });
 
   const categories = ["Men", "Women", "Kids"]; // Sample categories
-  const subcategories = {
+  // const subcategories = {
+  //   Men: ["Shoes", "Clothing", "Accessories"],
+  //   Women: ["Shoes", "Clothing", "Accessories"],
+  //   Kids: ["Shoes", "Clothing", "Toys"],
+  // }; // Sample subcategories based on category
+  const subcategories: { [key: string]: string[] } = {
     Men: ["Shoes", "Clothing", "Accessories"],
     Women: ["Shoes", "Clothing", "Accessories"],
     Kids: ["Shoes", "Clothing", "Toys"],
-  }; // Sample subcategories based on category
+  };
 
-  const handleChange = (e) => {
+  const handleChange = (e: { target: { name: any; value: any } }) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
@@ -26,14 +31,24 @@ const ProductForm = () => {
     }));
   };
 
-  const handleTagRemove = (tagToRemove) => {
+  const handleTagInputChange = (e: { target: { value: any } }) => {
+    const { value } = e.target;
+    if (value !== "") {
+      setFormData((prevData) => ({
+        ...prevData,
+        tags: [...prevData.tags, value],
+      }));
+    }
+  };
+
+  const handleTagRemove = (tagToRemove: string) => {
     setFormData((prevData) => ({
       ...prevData,
       tags: prevData.tags.filter((tag) => tag !== tagToRemove),
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
     // Handle form submission
     console.log(formData);
@@ -48,6 +63,7 @@ const ProductForm = () => {
         <input
           type="text"
           id="productName"
+          required
           name="productName"
           placeholder="Enter product name"
           value={formData.productName}
@@ -83,12 +99,11 @@ const ProductForm = () => {
           name="subcategory"
           value={formData.subcategory}
           onChange={handleChange}
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none
-           focus:border-blue-500"
+          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
         >
           <option value="">Select subcategory</option>
           {formData.category &&
-            subcategories[formData.category].map((subcategory) => (
+            subcategories[formData.category].map((subcategory: any) => (
               <option key={subcategory} value={subcategory}>
                 {subcategory}
               </option>
@@ -106,8 +121,7 @@ const ProductForm = () => {
           placeholder="Enter price"
           value={formData.price}
           onChange={handleChange}
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none
-           focus:border-blue-500"
+          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
         />
       </div>
       <div className="mb-4">
@@ -117,12 +131,11 @@ const ProductForm = () => {
         <textarea
           id="description"
           name="description"
+          required
           placeholder="Enter description"
           value={formData.description}
           onChange={handleChange}
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none
-           focus:border-blue-500"
-          rows="4"
+          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
         ></textarea>
       </div>
       <label htmlFor="description" className="block font-semibold mb-1">
@@ -146,7 +159,19 @@ const ProductForm = () => {
             </button>
           </div>
         ))}
+        <input
+          type="text"
+          placeholder="Add tag"
+          className="border border-gray-300 bg-gray-100 rounded-md px-3 py-1"
+          onChange={handleTagInputChange}
+        />
       </div>
+      <button
+        type="submit"
+        className="bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600 focus:outline-none"
+      >
+        Submit
+      </button>
     </form>
   );
 };

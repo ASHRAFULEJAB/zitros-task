@@ -1,20 +1,21 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 const ProductCardUpload = () => {
-  const [uploadProgress, setUploadProgress] = useState(75);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [uploadProgress] = useState(75);
 
   // Function to simulate upload progress
-  const simulateUploadProgress = () => {
-    const interval = setInterval(() => {
-      setUploadProgress((prevProgress) => {
-        const newProgress = prevProgress + 10;
-        if (newProgress >= 100) {
-          clearInterval(interval);
-        }
-        return newProgress;
-      });
-    }, 500);
-  };
+  // const simulateUploadProgress = () => {
+  //   const interval = setInterval(() => {
+  //     setUploadProgress((prevProgress) => {
+  //       const newProgress = prevProgress + 10;
+  //       if (newProgress >= 100) {
+  //         clearInterval(interval);
+  //       }
+  //       return newProgress;
+  //     });
+  //   }, 500);
+  // };
 
   // Function to handle delete button click
   const handleDelete = () => {

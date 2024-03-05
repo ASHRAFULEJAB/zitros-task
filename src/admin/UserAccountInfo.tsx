@@ -6,10 +6,7 @@ interface UserAccountInfoProps {
   designation: string;
 }
 
-const UserAccountInfo: React.FC<UserAccountInfoProps> = ({
-  username,
-  designation,
-}) => {
+const UserAccountInfo: React.FC<UserAccountInfoProps> = () => {
   return (
     <div className=" h-12 flex items-center  text-white ">
       <nav
