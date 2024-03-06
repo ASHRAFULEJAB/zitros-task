@@ -1,57 +1,41 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from "react";
-
-const ProductForm = () => {
-  const [formData, setFormData] = useState({
-    productName: "",
-    category: "",
-    subcategory: "",
-    price: "",
-    description: "",
-    tags: ["Sneaker", "Shoe", "Footwear", "Sneaker", "Shoe", "Footwear"], // Demo tags initially inside the input field
-  });
-
-  const categories = ["Men", "Women", "Kids"]; // Sample categories
-  // const subcategories = {
-  //   Men: ["Shoes", "Clothing", "Accessories"],
-  //   Women: ["Shoes", "Clothing", "Accessories"],
-  //   Kids: ["Shoes", "Clothing", "Toys"],
-  // }; // Sample subcategories based on category
-  const subcategories: { [key: string]: string[] } = {
+interface ProductFormProps {
+  formData: {
+    productName: string;
+    category: string;
+    subcategory: string;
+    price: string;
+    description: string;
+    tags: string[];
+  };
+  handleInputChange: (name: string, value: string) => void;
+  handleTagRemove: (tagToRemove: string) => void;
+  handleTagInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+const ProductForm: React.FC<ProductFormProps> = ({
+  formData,
+  handleInputChange,
+  handleTagRemove,
+  handleTagInputChange,
+}) => {
+  const [categories, setCategories] = useState(["Men", "Women", "Kids"]);
+  const [subcategories, setSubcategories] = useState({
     Men: ["Shoes", "Clothing", "Accessories"],
     Women: ["Shoes", "Clothing", "Accessories"],
     Kids: ["Shoes", "Clothing", "Toys"],
-  };
+  });
 
-  const handleChange = (e: { target: { name: any; value: any } }) => {
+  const handleChange = (e: { target: { name: any; value: any; }; }) => {
     const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
-
-  const handleTagInputChange = (e: { target: { value: any } }) => {
-    const { value } = e.target;
-    if (value !== "") {
-      setFormData((prevData) => ({
-        ...prevData,
-        tags: [...prevData.tags, value],
-      }));
-    }
-  };
-
-  const handleTagRemove = (tagToRemove: string) => {
-    setFormData((prevData) => ({
-      ...prevData,
-      tags: prevData.tags.filter((tag) => tag !== tagToRemove),
-    }));
+    handleInputChange(name, value);
   };
 
   const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
     // Handle form submission
-    console.log(formData);
+    console.log("Form submitted:", formData);
   };
 
   return (
@@ -103,7 +87,7 @@ const ProductForm = () => {
         >
           <option value="">Select subcategory</option>
           {formData.category &&
-            subcategories[formData.category].map((subcategory: any) => (
+            subcategories[formData.category].map((subcategory: string) => (
               <option key={subcategory} value={subcategory}>
                 {subcategory}
               </option>
@@ -159,19 +143,19 @@ const ProductForm = () => {
             </button>
           </div>
         ))}
-        <input
+        {/* <input
           type="text"
           placeholder="Add tag"
           className="border border-gray-300 bg-gray-100 rounded-md px-3 py-1"
           onChange={handleTagInputChange}
-        />
+        /> */}
       </div>
-      <button
+      {/* <button
         type="submit"
         className="bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600 focus:outline-none"
       >
         Submit
-      </button>
+      </button> */}
     </form>
   );
 };
