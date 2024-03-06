@@ -9,10 +9,10 @@ interface NavigationProps {
 
 const NavigationMenu: React.FC<NavigationProps> = () => {
   return (
-    <div className=" h-full w-1/8 text-white ">
+    <div className=" h-full lg:w-1/8 text-white ">
       <div
-        className="relative flex flex-col   bg-white
-       text-gray-700 h-screen w-full max-w-[20rem] p-4 
+        className="relative lg:flex flex-col   bg-white
+       text-gray-700 h-screen w-full lg:max-w-[20rem] p-4 
         "
       >
         <div className="mb-2 p-4">

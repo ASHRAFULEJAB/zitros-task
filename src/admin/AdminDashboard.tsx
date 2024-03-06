@@ -7,6 +7,7 @@ import NavigationMenu from "./NavigationSidebar";
 
 interface Product {
   name: string;
+  superCategory: string;
   category: string;
   subCategory: string;
   price: number;
@@ -16,6 +17,7 @@ interface Product {
 
 const initialProductState: Product = {
   name: "Navy Blue Sneakers Shoe",
+  superCategory: "Men",
   category: "Men",
   subCategory: "Shoe",
   price: 175,
@@ -67,7 +69,7 @@ const AdminDashboard: React.FC = () => {
   };
 
   return (
-    <div className="flex h-full">
+    <div className="md:flex md:h-full h-screen">
       <NavigationMenu
         activeSection={activeSection}
         setActiveSection={setActiveSection}

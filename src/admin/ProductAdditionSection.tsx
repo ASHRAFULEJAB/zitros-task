@@ -8,6 +8,7 @@ import { Button } from "../components/ui/button";
 
 interface Product {
   name: string;
+  superCategory: string;
   category: string;
   subCategory: string;
   price: number;
@@ -30,6 +31,7 @@ interface ProductAdditionProps {
 const ProductAdditionSection: React.FC<ProductAdditionProps> = () => {
   const [formData, setFormData] = useState({
     productName: "",
+    superCategory: "",
     category: "",
     subcategory: "",
     price: "",
@@ -71,24 +73,45 @@ const ProductAdditionSection: React.FC<ProductAdditionProps> = () => {
       reader.readAsDataURL(file);
     }
   };
-const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-  e.preventDefault();
-  // Combine form data with selected image
-  const productWithImage = { ...formData, image: selectedImage };
-  // Handle form submission here
-  console.log("Form submitted:", productWithImage);
-};
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    // Combine form data with selected image
+    const productWithImage = { ...formData, image: selectedImage };
+    // Handle form submission here
+    console.log("Form submitted:", productWithImage);
+    try {
+      const response = await fetch(
+        "https://zitros-backend-ld4x4ac6z-ashrafulejab.vercel.app/products",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(productWithImage),
+        }
+      );
+      if (response.ok) {
+        console.log("Product added successfully");
+        alert("Product added succesfully!");
+      } else {
+        console.error("Failed to add product");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
   return (
-    <div className="bg-white h-9/11 mb-6 w-5/6 p-4 mx-auto items-center justify-center mt-10 rounded-xl">
+    <div className="bg-white h-9/11 mb-6 w-5/6 p-4 mx-auto items-center justify-center mt-10 
+    rounded-xl">
       <h1 className="my-3 text-xl">Add Product</h1>
       {/* Image Upload */}
 
-      <div className="flex gap-3 mt-6">
+      <div className="md:flex gap-3 mt-6">
         <div className="flex-1 border p-3 rounded-lg">
           {" "}
           <span>Add images</span>
           <div
-            className="w-[460px]  relative border-2 mt-3 border-blue-400 border-dashed rounded-lg p-6"
+            className="md:w-[460px]  relative border-2 mt-3 border-blue-400 border-dashed rounded-lg p-6"
             id="dropzone"
           >
             <input

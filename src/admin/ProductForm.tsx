@@ -4,6 +4,7 @@ import { useState } from "react";
 interface ProductFormProps {
   formData: {
     productName: string;
+    superCategory: string;
     category: string;
     subcategory: string;
     price: string;
@@ -20,6 +21,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
   handleTagRemove,
   handleTagInputChange,
 }) => {
+  const [supercategories, setSuperCategories] = useState(["Men", "Women", "Kids"]);
   const [categories, setCategories] = useState(["Men", "Women", "Kids"]);
   const [subcategories, setSubcategories] = useState({
     Men: ["Shoes", "Clothing", "Accessories"],
@@ -54,6 +56,25 @@ const ProductForm: React.FC<ProductFormProps> = ({
           onChange={handleChange}
           className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
         />
+      </div>
+      <div className="mb-4">
+        <label htmlFor="category" className="block font-semibold mb-1">
+          Super Category
+        </label>
+        <select
+          id="supercategory"
+          name="supercategory"
+          value={formData.superCategory}
+          onChange={handleChange}
+          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+        >
+          <option value="">Select category</option>
+          {supercategories.map((category) => (
+            <option key={category} value={category}>
+              {category}
+            </option>
+          ))}
+        </select>
       </div>
       <div className="mb-4">
         <label htmlFor="category" className="block font-semibold mb-1">

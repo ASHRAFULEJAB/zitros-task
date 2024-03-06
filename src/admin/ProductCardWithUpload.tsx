@@ -25,12 +25,12 @@ const ProductCardUpload = () => {
   return (
     <div>
       <div
-        className="flex flex-1 rounded-lg bg-white mt-5 mb-4 
+        className="md:flex flex-1 rounded-lg bg-white mt-5 mb-4 
     shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700 
-    w-[460px] md:flex-row"
+    lg:w-[460px] md:flex-row"
       >
         <img
-          className="h-16 w-1/6 rounded-lg my-auto ml-2 items-center justify-center object-cover
+          className="h-16 md:w-1/6 rounded-lg my-auto ml-2 items-center justify-center object-cover
          md:!rounded-none md:!rounded-lg"
           src="https://tecdn.b-cdn.net/wp-content/uploads/2020/06/vertical.jpg"
           alt=""
